@@ -1,4 +1,6 @@
 {
 	"sizeX": 1280,
-	"sizeY": 720
+	"sizeY": 720, 
+	"maxfps": 40,
+	"masterVolume": 100
 }

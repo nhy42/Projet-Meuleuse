@@ -1,0 +1,7 @@
+{
+	"ball": {
+		"sizeX": 100,
+		"sizeY": 100,
+		"spritePath": "assets/img/ball.png"
+	}
+}

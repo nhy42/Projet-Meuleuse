@@ -1,5 +1,8 @@
 {
 	"objects": [
 		{"x": 150, "y": 150, "vx":50, "vy":30, "type":"ball", "size": 1, "positionType":1}
-	]
+	],
+	"rules": [
+	], 
+	"background" : "assets/img/bg.png"
 }
