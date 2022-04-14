@@ -20,10 +20,9 @@ def run():
 def update():
     # NE PAS OUBLIER DE FAIRE SAUTER LA PREMIERE ITERATION (ou pas osef en fait)
     ms = view.getNextTick()
-    model.updateModel(ms)
     # update the model
+    model.updateModel(ms)
     # render
-    view.initLevel()
 
 
 def firstUse():
@@ -40,6 +39,7 @@ def init():
     # restore les paramètres
     view.initView((1280, 720))
     model.initModel("splashScreen")
+    view.initLevel("splashScreen")
 
 
 def restoreSettings():
@@ -49,7 +49,6 @@ def restoreSettings():
 def internalRestoreSettings(Settings):
     Settings = file.readJSONFile("userdata/settings.json")
     return 0
-
 
 # def saveSettings(settings):  # ?
 #     pass
