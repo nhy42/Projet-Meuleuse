@@ -2,7 +2,6 @@ import json
 
 
 def readJSONFile(path):
-    jsonObject = {}
     with open(path, "r") as f:
         jsonObject = json.load(f)
     return jsonObject
