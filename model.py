@@ -1,5 +1,5 @@
 import math
-
+import view
 import physics
 import level
 import file
@@ -19,12 +19,12 @@ def getNewID():
 
 
 def internalInitModel(World, WorldConfig, lvlName):
-    # todo
     levelConfig = level.getLevel(lvlName)
     del World[:]
     setObjectInWorld(World, levelConfig["objects"])
     WorldConfig.clear()
-    setWorldconfig(WorldConfig, levelConfig["rules"])
+    setWorldconfig(WorldConfig, levelConfig["rules"])  # todo
+    view.loadBackgroundToSprites(levelConfig["background"])
 
 
 def setObjectInWorld(World, objects):
