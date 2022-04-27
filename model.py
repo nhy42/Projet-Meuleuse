@@ -1,14 +1,13 @@
-import math
 import view
 import physics
 import level
 import file
 import event
 
+
 MODELWORLD = []
 WORLDCONFIG = {}
-idCounter = 0
-G = 6.6743e-11  # N*m^2*kg^-2
+idCounter = 0  # donc le compteur commence à 1
 MODELTYPES = file.readJSONFile("assets/modelTypes.json")
 
 
@@ -63,35 +62,34 @@ def internalUpdateModel(World, WorldConfig, ms):
 
 
 def updatePositions(World, ms):
-    WorldClone = World.copy()
     for i in range(len(World)):
-        if World[i]["positionType"] != 0:  # check if movable
+        if World[i]["positionType"] != 0:  # check if movable  todo : opti
             # update position
             if World[i]["positionType"] == 1:
-                World[i]["x"] = World[i]["x"] + World[i]["vx"] * ms / 1000
-                World[i]["y"] = World[i]["y"] + World[i]["vy"] * ms / 1000
+
+                tempX = World[i]["x"] + World[i]["vx"] * ms / 1000
+                tempY = World[i]["y"] + World[i]["vy"] * ms / 1000
+
+                # todo : collision
+                collided = physics.isColliding(World, tempX, tempY, MODELTYPES[World[i]["type"]]["r"])
+                if len(collided) != 0:
+                    # event.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH")
+                    collisionResult = physics.calcCollision(World[i]["x"], World[i]["y"],
+                                                            MODELTYPES[World[i]["type"]]["r"],
+                                                            World[i]["vx"], World[i]["vy"],
+                                                            collided[0], collided[1], collided[2], ms)
+                    # ^ retourne [newX, newY, newVX, newVY]
+                    World[i]["x"], World[i]["y"] = collisionResult[0], collisionResult[1]
+                    World[i]["vx"], World[i]["vy"] = collisionResult[2], collisionResult[3]
+                else:
+                    World[i]["x"] = tempX
+                    World[i]["y"] = tempY
                 # update velocity
 
-                # acceleration = calcAccelerationOnObject(World[i], WorldClone)  # todo
-            elif World[i]["positionType"] == 2:
-                pass  # besoin d'un timer global (au moins du chargement du niveau)
+                # acceleration = physics.calcAccelerationOnObject(World[i], World)  # todo
 
-
-def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans un tableau
-    # todo
-    currentObject = {}
-    for i in range(len(World)):
-        if World[i]["id"] == objectID:
-            currentObject["x"] = World[i]["x"]
-            currentObject["y"] = World[i]["y"]
-            currentObject["mass"] = MODELTYPES[World[i]["type"]]["mass"]
-            currentObject["type"] = World[i]["type"]
-            # if pour les non-spheriques ^ todo
-    for i in range(len(World)):
-        # NE PAS OUBLIER DE FAIRE X2 SI L'OBJET EST IMMOBILE => en fait non
-        # math.sqrt((currentObject["x"] - [World[i]["x"]])**2+(currentObject["y"] - World[i]["y"])**2)
-        # todo
-        pass
+            # elif World[i]["positionType"] == 2:  # position : fonction
+            #     pass  # besoin d'un timer global (au moins du chargement du niveau)
 
 
 def giveWorldToView():

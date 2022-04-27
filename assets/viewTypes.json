@@ -5,5 +5,19 @@
 		"spritePath": "assets/img/ball.png",
 		"spriteCount":1,
 		"hasAnimation": false
+	},
+	"splashText": {
+		"sizeX": 500,
+		"sizeY": 200,
+		"spritePath": "assets/img/splashText.png",
+		"spriteCount":1,
+		"hasAnimation": false
+	},
+	"vert": {
+		"sizeX": 50,
+		"sizeY": 50,
+		"spritePath": "assets/img/vert.png",
+		"spriteCount":1,
+		"hasAnimation": false
 	}
 }

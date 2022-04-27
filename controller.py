@@ -20,15 +20,16 @@ def run():
 def update():
     # NE PAS OUBLIER DE FAIRE SAUTER LA PREMIERE ITERATION (ou pas osef en fait)
     ms = view.getNextTick()
-    print(ms)
+    # print(ms)
     # update the model
+    view.getEvents()
     model.updateModel(ms)
     # render
     view.update()
 
 
 def firstUse():
-    event.warn("TODO: First Use")
+    # todo : first use
     if not firstUse:
         event.log("First use")
         pass

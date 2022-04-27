@@ -1,6 +1,7 @@
 {
 	"objects": [
-		{"x": 150, "y": 150, "vx":100, "vy":20, "type":"ball", "size": 1, "positionType":1}
+		{"x": 300, "y": 326, "vx":-100, "vy":0, "type":"ball", "size": 1, "positionType":1},
+		{"x": 100, "y": 400, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0}
 	],
 	"rules": [
 	], 

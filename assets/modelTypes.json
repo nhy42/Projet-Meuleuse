@@ -4,5 +4,14 @@
 		"r": 50,
 		"mass": 1e10,
 		"friction": 0.4
+	},
+	"splashText": {
+		"type": 2
+	},
+	"vert": {
+		"type": 1,
+		"r": 25,
+		"mass": 1e10,
+		"friction": 0.4
 	}
 }
