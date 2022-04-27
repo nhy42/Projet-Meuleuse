@@ -77,7 +77,8 @@ def updatePositions(World, ms):
                     collisionResult = physics.calcCollision(World[i]["x"], World[i]["y"],
                                                             MODELTYPES[World[i]["type"]]["r"],
                                                             World[i]["vx"], World[i]["vy"],
-                                                            collided[0], collided[1], collided[2], ms)
+                                                            collided[0], collided[1], collided[2],
+                                                            MODELTYPES[World[i]["type"]]["friction"], ms)
                     # ^ retourne [newX, newY, newVX, newVY]
                     World[i]["x"], World[i]["y"] = collisionResult[0], collisionResult[1]
                     World[i]["vx"], World[i]["vy"] = collisionResult[2], collisionResult[3]

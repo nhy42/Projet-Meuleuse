@@ -35,20 +35,21 @@ def isColliding(World, x1, y1, r1):
     return []  # pas de collision
 
 
-def calcCollision(x1, y1, r1, vx, vy, x2, y2, r2, ms):
-    collisionT = calcCollisionMoment(x1, y1, r1, vx, vy, x2, y2, r2)  # return moment of collision
+def calcCollision(x1, y1, r1, vx, vy, x2, y2, r2, fric, ms):  # fric = friction
+    collisionT = calcCollisionMoment(x1, y1, r1, vx, vy, x2, y2, r2)  # return time of collision (in ms)
     if collisionT > ms:
-        return [x1 + vx * ms / 1000, y1 + vy * ms / 1000, vx, vy]
+        # si la collision est pas dans le scope (ne doit pas arriver mais en pratique BON...)
+        return [x1 + vx * ms / 1000, y1 + vy * ms / 1000, vx, vy]  # on touche a rien
     xc, yc = x1 + vx * collisionT / 1000, y1 + vy * collisionT / 1000
     # ^ x and y for ball1 when collision occur
-    alpha = (mesureAngle(x2, y2, xc, yc) + 0.5 * math.pi) % (2*math.pi)  # angle vecteur normal
+    alpha = (mesureAngle(x2, y2, xc, yc) + 0.5 * math.pi) % (2*math.pi)  # angle of normal vector
     # ox, oy = xc + ((x2 - xc) * (r1 / (r1 + r2))), yc + ((y2 - yc) * (r1 / (r1 + r2)))
-    # ^ coordonées du point auquel a lieu la collision
+    # ^ coords of the point where colision occur => useless
     remainingTravelTime = ms - collisionT
     # vecteur normal
     nx, ny = math.sin(alpha), -math.cos(alpha)
     dotProduct = (vx * nx) + (vy * ny)
-    newVX, newVY = (-2 * nx * dotProduct)+vx, (-2 * ny * dotProduct)+vy
+    newVX, newVY = ((-2 * nx * dotProduct)+vx)*fric, ((-2 * ny * dotProduct)+vy)*fric
     newX, newY = xc + newVX * (remainingTravelTime / 1000), yc + newVY * (remainingTravelTime / 1000)
     return [newX, newY, newVX, newVY]
 
