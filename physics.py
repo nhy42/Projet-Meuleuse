@@ -4,11 +4,14 @@ import file
 
 MODELTYPES = file.readJSONFile("assets/modelTypes.json")
 G = 6.6743e-11  # N*m^2*kg^-2
+G = 6.6743e-5
+# G est sujet a modification pour des raisons de gamedesign
 
 
 def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans un tableau
     # todo
     currentObject = {}
+    ax, ay = 0, 0
     for i in range(len(World)):
         if World[i]["id"] == objectID:
             currentObject["x"] = World[i]["x"]
@@ -17,10 +20,20 @@ def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans u
             currentObject["type"] = World[i]["type"]
             # if pour les non-spheriques ^ todo
     for i in range(len(World)):
-        # NE PAS OUBLIER DE FAIRE X2 SI L'OBJET EST IMMOBILE => en fait non
-        # math.sqrt((currentObject["x"] - [World[i]["x"]])**2+(currentObject["y"] - World[i]["y"])**2)
-        # todo
-        pass
+        if World[i]["positionType"] == 0 and World[i]["id"] != objectID:
+            accToAdd = accOnObject1From2(currentObject["x"], currentObject["y"], currentObject["mass"],
+                                         World[i]["x"], World[i]["y"], MODELTYPES[World[i]["type"]]["mass"])
+            ax, ay = ax + accToAdd[0], ay + accToAdd[1]
+    return [ax, ay]
+
+
+def accOnObject1From2(x1, y1, m1, x2, y2, m2):  # return [ax, ay]
+    dx, dy = x2 - x1, y2 - y1
+    dsq = dx**2 + dy**2
+    dT = math.sqrt(dsq)
+    f = G * ((m1 + m2) / dsq) if dsq != 0 else 0  # normalement dsq != 0 mais au cas ou
+    ax, ay = f * dx / dT, f * dy / dT
+    return [ax, ay]
 
 
 def isColliding(World, x1, y1, r1):

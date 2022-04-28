@@ -85,12 +85,11 @@ def updatePositions(World, ms):
                 else:
                     World[i]["x"] = tempX
                     World[i]["y"] = tempY
+
                 # update velocity
-
-                # acceleration = physics.calcAccelerationOnObject(World[i], World)  # todo
-
-            # elif World[i]["positionType"] == 2:  # position : fonction
-            #     pass  # besoin d'un timer global (au moins du chargement du niveau)
+                ax, ay = physics.calcAccelerationOnObject(World[i]["id"], World)
+                World[i]["vx"] = World[i]["vx"] + ax * ms / 1000
+                World[i]["vy"] = World[i]["vy"] + ay * ms / 1000
 
 
 def giveWorldToView():
