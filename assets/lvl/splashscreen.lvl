@@ -1,7 +1,9 @@
 {
 	"objects": [
-		{"x": 300, "y": 326, "vx":-100, "vy":0, "type":"ball", "size": 1, "positionType":1},
-		{"x": 100, "y": 400, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0}
+		{"x": 200, "y": 460, "vx":300, "vy":0, "type":"vert", "size": 1, "positionType":1},
+		{"x": 400, "y": 300, "vx":100, "vy":0, "type":"vert", "size": 1, "positionType":1},
+		{"x": 400, "y": 900, "vx":0, "vy":-140, "type":"vert", "size": 1, "positionType":1},
+		{"x": 400, "y": 400, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0}
 	],
 	"rules": [
 	], 
