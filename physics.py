@@ -3,7 +3,7 @@ import math
 import file
 
 MODELTYPES = file.readJSONFile("assets/modelTypes.json")
-G = 6.6743e-11  # N*m^2*kg^-2
+# G = 6.6743e-11  # N*m^2*kg^-2
 G = 6.6743e-5
 # G est sujet a modification pour des raisons de gamedesign
 
@@ -36,16 +36,20 @@ def accOnObject1From2(x1, y1, m1, x2, y2, m2):  # return [ax, ay]
     return [ax, ay]
 
 
-def isColliding(World, x1, y1, r1):
+def isCollidingSomething(World, x1, y1, r1):
     for i in range(len(World)):
         # todo : check collisions avec carré
-        if World[i]["positionType"] == 0:
+        if World[i]["positionType"] == 0:  # todo : si l'objet a "noPhysics"
             x2, y2 = World[i]["x"], World[i]["y"]
-            d = math.sqrt((x2 - x1) ** 2 + ((y2 - y1) ** 2))
+            d = mesureDistance(x1, y1, x2, y2)
             r2 = MODELTYPES[World[i]["type"]]["r"]
             if d < r2 + r1:
                 return [x2, y2, r2]
     return []  # pas de collision
+
+
+def isInside(x1, y1, r1, x2, y2):
+    return mesureDistance(x1, y1, x2, y2) < r1
 
 
 def calcCollision(x1, y1, r1, vx, vy, x2, y2, r2, fric, ms):  # fric = friction
@@ -85,6 +89,10 @@ def calcCollisionMoment(xi, yi, r1, vx, vy, x2, y2, r2):
     else:
         event.error(f"No rac found for polynome. DEBUG infos : {xi, yi, r1, vx, vy, x2, y2, r2}")
         return 0
+
+
+def mesureDistance(x1, y1, x2, y2):
+    return math.sqrt((x2 - x1) ** 2 + ((y2 - y1) ** 2))
 
 
 def mesureAngle(originX, originY, pointToMesureX, pointToMesureY):
