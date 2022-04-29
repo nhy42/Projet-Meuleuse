@@ -41,6 +41,47 @@ def getEvents():
     return pygame.event.get()
 
 
+def getEventsParsed():
+    events = getEvents()
+    if len(events) != 0:  # opti, souvent pas d'interraction => physique allumée
+        parsedEvents = []
+        for e in events:
+            daEvent = []
+            if e.type == pygame.MOUSEBUTTONDOWN:
+                daEvent.append("MOUSEBUTTONDOWN")
+            elif e.type == pygame.MOUSEBUTTONUP:
+                daEvent.append("MOUSEBUTTONUP")
+            elif e.type == pygame.KEYDOWN:
+                if e.key == pygame.K_BACKSPACE:
+                    daEvent.append("KEYDOWN")
+                    daEvent.append("BACKSPACE")
+                elif e.key == pygame.K_ESCAPE:
+                    daEvent.append("KEYDOWN")
+                    daEvent.append("ESCAPE")
+                elif e.key == pygame.K_SPACE:
+                    daEvent.append("KEYDOWN")
+                    daEvent.append("SPACE")
+            elif e.type == pygame.KEYUP:
+                if e.key == pygame.K_BACKSPACE:
+                    daEvent.append("KEYUP")
+                    daEvent.append("BACKSPACE")
+                elif e.key == pygame.K_ESCAPE:
+                    daEvent.append("KEYUP")
+                    daEvent.append("ESCAPE")
+                elif e.key == pygame.K_SPACE:
+                    daEvent.append("KEYUP")
+                    daEvent.append("SPACE")
+            if len(daEvent) > 0:
+                parsedEvents.append(daEvent)
+        return parsedEvents
+    else:
+        return []
+
+
+def getMousePos():
+    return pygame.mouse.get_pos()
+
+
 def loadBackgroundToSprites(bgPath):
     internalLoadBackgroundToSprites(SPRITES, bgPath)
 
@@ -50,7 +91,7 @@ def internalLoadBackgroundToSprites(Sprites, bgPath):
 
 
 def getModelWorld():
-    return model.giveWorldToView()
+    return model.giveWorld()
 
 
 def internalRefreshView(Sprites, Viewtypes):

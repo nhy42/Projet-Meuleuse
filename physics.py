@@ -9,7 +9,6 @@ G = 6.6743e-5
 
 
 def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans un tableau
-    # todo
     currentObject = {}
     ax, ay = 0, 0
     for i in range(len(World)):
@@ -20,7 +19,8 @@ def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans u
             currentObject["type"] = World[i]["type"]
             # if pour les non-spheriques ^ todo
     for i in range(len(World)):
-        if World[i]["positionType"] == 0 and World[i]["id"] != objectID:
+        if World[i]["positionType"] == 0 and World[i]["id"] != objectID \
+                and "noPhysics" not in World[i]["properties"] and "noGrav" not in World[i]["properties"]:
             accToAdd = accOnObject1From2(currentObject["x"], currentObject["y"], currentObject["mass"],
                                          World[i]["x"], World[i]["y"], MODELTYPES[World[i]["type"]]["mass"])
             ax, ay = ax + accToAdd[0], ay + accToAdd[1]
@@ -29,7 +29,7 @@ def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans u
 
 def accOnObject1From2(x1, y1, m1, x2, y2, m2):  # return [ax, ay]
     dx, dy = x2 - x1, y2 - y1
-    dsq = dx**2 + dy**2
+    dsq = dx ** 2 + dy ** 2
     dT = math.sqrt(dsq)
     f = G * ((m1 + m2) / dsq) if dsq != 0 else 0  # normalement dsq != 0 mais au cas ou
     ax, ay = f * dx / dT, f * dy / dT
@@ -39,7 +39,9 @@ def accOnObject1From2(x1, y1, m1, x2, y2, m2):  # return [ax, ay]
 def isCollidingSomething(World, x1, y1, r1):
     for i in range(len(World)):
         # todo : check collisions avec carré
-        if World[i]["positionType"] == 0:  # todo : si l'objet a "noPhysics"
+        if World[i]["positionType"] == 0 \
+                and "noPhysics" not in World[i]["properties"] \
+                and "noCol" not in World[i]["properties"]:
             x2, y2 = World[i]["x"], World[i]["y"]
             d = mesureDistance(x1, y1, x2, y2)
             r2 = MODELTYPES[World[i]["type"]]["r"]
@@ -59,14 +61,14 @@ def calcCollision(x1, y1, r1, vx, vy, x2, y2, r2, fric, ms):  # fric = friction
         return [x1 + vx * ms / 1000, y1 + vy * ms / 1000, vx, vy]  # on touche a rien
     xc, yc = x1 + vx * collisionT / 1000, y1 + vy * collisionT / 1000
     # ^ x and y for ball1 when collision occur
-    alpha = (mesureAngle(x2, y2, xc, yc) + 0.5 * math.pi) % (2*math.pi)  # angle of normal vector
+    alpha = (mesureAngle(x2, y2, xc, yc) + 0.5 * math.pi) % (2 * math.pi)  # angle of normal vector
     # ox, oy = xc + ((x2 - xc) * (r1 / (r1 + r2))), yc + ((y2 - yc) * (r1 / (r1 + r2)))
     # ^ coords of the point where colision occur => useless
     remainingTravelTime = ms - collisionT
     # vecteur normal
     nx, ny = math.sin(alpha), -math.cos(alpha)
     dotProduct = (vx * nx) + (vy * ny)
-    newVX, newVY = ((-2 * nx * dotProduct)+vx)*fric, ((-2 * ny * dotProduct)+vy)*fric
+    newVX, newVY = ((-2 * nx * dotProduct) + vx) * fric, ((-2 * ny * dotProduct) + vy) * fric
     newX, newY = xc + newVX * (remainingTravelTime / 1000), yc + newVY * (remainingTravelTime / 1000)
     return [newX, newY, newVX, newVY]
 
