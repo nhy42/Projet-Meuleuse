@@ -1,6 +1,5 @@
 import pygame
 import model
-import sound
 import level
 import file
 import event
@@ -26,7 +25,8 @@ def initView(size, Sprites=None):
     DISPLAY = pygame.display.set_mode(size)
     pygame.display.init()
     for key in VIEWTYPES:
-        Sprites[key] = pygame.image.load(VIEWTYPES[key]["spritePath"]).convert_alpha()
+        if "invisible" not in VIEWTYPES[key]:
+            Sprites[key] = pygame.image.load(VIEWTYPES[key]["spritePath"]).convert_alpha()
 
 
 def quitGame():
@@ -60,8 +60,9 @@ def internalRefreshView(Sprites, Viewtypes):
     modelWord = getModelWorld()  # ceci est une référence
     for obj in modelWord:
         objType = obj["type"]
-        DISPLAY.blit(Sprites[objType], (obj["x"] - Viewtypes[objType]["sizeX"] / 2,
-                                        obj["y"] - Viewtypes[objType]["sizeY"] / 2))
+        if "invisible" not in VIEWTYPES[objType]:
+            DISPLAY.blit(Sprites[objType], (obj["x"] - Viewtypes[objType]["sizeX"] / 2,
+                                            obj["y"] - Viewtypes[objType]["sizeY"] / 2))
     pygame.display.flip()
 
 

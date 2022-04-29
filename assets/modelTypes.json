@@ -13,5 +13,11 @@
 		"r": 25,
 		"mass": 1e10,
 		"friction": 0.65
+	},
+	"invisiball": {
+		"type": 1,
+		"r": 25,
+		"mass": 1e10,
+		"friction": 0.65
 	}
 }

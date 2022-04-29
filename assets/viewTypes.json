@@ -19,5 +19,8 @@
 		"spritePath": "assets/img/vert.png",
 		"spriteCount":1,
 		"hasAnimation": false
+	},
+	"invisiball": {
+		"invisible": true
 	}
 }
