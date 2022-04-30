@@ -1,6 +1,5 @@
 import pygame
 import model
-import level
 import file
 import event
 
