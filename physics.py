@@ -13,6 +13,9 @@ def calcAccelerationOnObject(objectID, World, WorldConfig):  # retourne l'accele
     ax, ay = 0, 0
     for i in range(len(World)):
         if World[i]["id"] == objectID:
+            if "noAcc" in World[i]["properties"]:
+                # ^ si l'objet a noAcc, on ne lui applique pas d'acceleration
+                return [0, 0]
             currentObject["x"] = World[i]["x"]
             currentObject["y"] = World[i]["y"]
             currentObject["mass"] = MODELTYPES[World[i]["type"]]["mass"]
