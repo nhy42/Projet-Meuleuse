@@ -36,11 +36,11 @@ def internalInitModel(World, WorldConfig, Spawnables, lvlName):
 
 def setObjectsInWorld(World, objects):
     for obj in objects:
-        spawnObjet(obj["x"], obj["y"], obj["vx"], obj["vy"], obj["type"], obj["size"], obj["positionType"],
-                   obj["properties"] if "properties" in obj else [], World)
+        addObjectToWorld(obj["x"], obj["y"], obj["vx"], obj["vy"], obj["type"], obj["size"], obj["positionType"],
+                         obj["properties"] if "properties" in obj else [], World)
 
 
-def spawnObjet(x, y, vx, vy, objectType, size, positionType, properties, World=None):
+def addObjectToWorld(x, y, vx, vy, objectType, size, positionType, properties, World=None):
     if World is None:
         World = giveReference(MODELWORLD)
     World.append({"id": getNewID(),
@@ -75,35 +75,40 @@ def internalUpdateModel(World, WorldConfig, Spawnables,  ms):
     mouseX, mouseY = view.getMousePos()
 
     # event processing
-    processUserEvents(World, WorldConfig, events, mouseX, mouseY)
+    processUserEvents(World, WorldConfig, Spawnables, events, mouseX, mouseY)
 
     if "noPhysics" not in WorldConfig:
-        updatePositions(World, ms)
+        updatePositions(World, WorldConfig, ms)
 
 
-def processUserEvents(World, WorldConfig, events, mx, my):
+def processUserEvents(World, WorldConfig, Spawnables, events, mx, my):
     for e in events:
         if e[0] == "MOUSEBUTTONDOWN" or e[0] == "MOUSEBUTTONUP":
             pass
         elif e[0] == "KEYDOWN":
             if e[1] == "BACKSPACE":
-                pass
+                if "allowReloadKey" in WorldConfig:
+                    interact.reloadLevel(WorldConfig)
             elif e[1] == "SPACE":
-                pass
+                if "allowPauseKey" in WorldConfig:
+                    interact.switchPause(World, WorldConfig, Spawnables)
             elif e[1] == "ESCAPE":
-                pass
+                if "allowMenuKey" in WorldConfig:
+                    interact.switchMenu(World, WorldConfig, Spawnables)
         elif e[0] == "KEYUP":
             pass  # pour future utilisation (ou pas ?)
 
 
 def processCollisionEvent(Object):
     pass
+    # je sais pas ce que tu es mais en tout cas j'ai perdu l'idée, ca c'est sur
 
 
-def updatePositions(World, ms):
+def updatePositions(World, WorldConfig, ms):
     for i in range(len(World)):
-        if World[i]["positionType"] != 0:
-            # check if movable  todo : opti
+        if World[i]["positionType"] != 0 and \
+                (("displayingMenu" in WorldConfig) == ("menu" in World[i]["properties"]) == ("paused" in WorldConfig)):
+            # check if movable and check if menu is opened  todo : opti
             # update position
             if World[i]["positionType"] == 1:
 
@@ -125,7 +130,7 @@ def updatePositions(World, ms):
                     World[i]["y"] = tempY
 
                 # update velocity
-                ax, ay = physics.calcAccelerationOnObject(World[i]["id"], World)
+                ax, ay = physics.calcAccelerationOnObject(World[i]["id"], World, WorldConfig)
                 World[i]["vx"] = World[i]["vx"] + ax * ms / 1000
                 World[i]["vy"] = World[i]["vy"] + ay * ms / 1000
 
@@ -136,6 +141,10 @@ def giveWorld():
 
 def giveWorldConfig():
     return giveReference(WORLDCONFIG)
+
+
+def giveSpawnables():
+    return giveReference(SPAWNABLES)
 
 
 def giveReference(obj):

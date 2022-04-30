@@ -1,13 +1,17 @@
 {
 	"objects": [
-		{"x": 300, "y": 448, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":1},
-		{"x": 600, "y": 425, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0, "properties": ["noCol"]},
-		{"x": 600, "y": 475, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0, "properties": ["noGrav"]}
+		{"x": 300, "y": 448, "vx":0, "vy":-50, "type":"vert", "size": 1, "positionType":1, "properties": []},
+		{"x": 100, "y": 110, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0, "properties": []},
+		{"x": 1265, "y": 15, "vx":0, "vy":0, "type":"playSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
 	],
 	"spawnables": [
+		{"id":100, "x": 600, "y": 448, "vx":0, "vy":-50, "type":"vert", "size": 1, "positionType":1, "properties": []},
+		{"id":101, "x": 400, "y": 110, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0, "properties": []},
+		{"id":200, "x": 1265, "y": 15, "vx":0, "vy":0, "type":"pauseSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]},
+		{"id":201, "x": 1265, "y": 15, "vx":0, "vy":0, "type":"playSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
 	],
 	"rules": [
-		"a"
+		"allowReloadKey", "allowPauseKey", "allowMenuKey", "dontShowPauseSign_"
 	],
 	"background": "assets/img/bg720.png"
 }

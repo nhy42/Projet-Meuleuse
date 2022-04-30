@@ -22,5 +22,15 @@
 	},
 	"invisiball": {
 		"invisible": true
+	},
+	"pauseSign": {
+		"sizeX": 20,
+		"sizeY": 20,
+		"spritePath": "assets/img/pauseSign.png"
+	},
+	"playSign": {
+		"sizeX": 20,
+		"sizeY": 20,
+		"spritePath": "assets/img/playSign.png"
 	}
 }

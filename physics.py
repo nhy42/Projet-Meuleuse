@@ -8,7 +8,7 @@ G = 6.6743e-5
 # G est sujet a modification pour des raisons de gamedesign
 
 
-def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans un tableau
+def calcAccelerationOnObject(objectID, World, WorldConfig):  # retourne l'acceleration dans un tableau
     currentObject = {}
     ax, ay = 0, 0
     for i in range(len(World)):
@@ -20,7 +20,9 @@ def calcAccelerationOnObject(objectID, World):  # retourne l'acceleration dans u
             # if pour les non-spheriques ^ todo
     for i in range(len(World)):
         if World[i]["positionType"] == 0 and World[i]["id"] != objectID \
-                and "noPhysics" not in World[i]["properties"] and "noGrav" not in World[i]["properties"]:
+                and "noPhysics" not in World[i]["properties"] and "noGrav" not in World[i]["properties"] \
+                and not (("displayingMenu" in WorldConfig) ^ ("menu" in World[i]["properties"])):
+
             accToAdd = accOnObject1From2(currentObject["x"], currentObject["y"], currentObject["mass"],
                                          World[i]["x"], World[i]["y"], MODELTYPES[World[i]["type"]]["mass"])
             ax, ay = ax + accToAdd[0], ay + accToAdd[1]
