@@ -2,23 +2,22 @@
 	"ball": {
 		"sizeX": 100,
 		"sizeY": 100,
-		"spritePath": "assets/img/ball.png",
-		"spriteCount":1,
-		"hasAnimation": false
+		"spritePath": "assets/img/ball.png"
+	},
+	"playButton": {
+		"sizeX": 120,
+		"sizeY": 120,
+		"spritePath": "assets/img/playButton.png"
 	},
 	"splashText": {
 		"sizeX": 500,
 		"sizeY": 200,
-		"spritePath": "assets/img/splashText.png",
-		"spriteCount":1,
-		"hasAnimation": false
+		"spritePath": "assets/img/splashText.png"
 	},
 	"vert": {
 		"sizeX": 50,
 		"sizeY": 50,
-		"spritePath": "assets/img/vert.png",
-		"spriteCount":1,
-		"hasAnimation": false
+		"spritePath": "assets/img/vert.png"
 	},
 	"invisiball": {
 		"invisible": true

@@ -1,7 +1,11 @@
 import model
-
-
+import file
+import physics
 # import event
+
+MODELTYPES = file.readJSONFile("assets/modelTypes.json")
+SECURITYRADIUSCONST = 55  # rayon de la balle + boh jsais pas 5
+# ^ pour l'instant, dans le futur faire r de la plus grosse balle + 5~10
 
 
 def spawnObject(objID, World=None, Spawnables=None):
@@ -13,9 +17,7 @@ def spawnObject(objID, World=None, Spawnables=None):
     i = len(Spawnables) - 1
     while i >= 0 and not done:
         if Spawnables[i]["id"] == objID:
-            model.addObjectToWorld(Spawnables[i]["x"], Spawnables[i]["y"], Spawnables[i]["vx"], Spawnables[i]["vy"],
-                                   Spawnables[i]["type"], Spawnables[i]["size"], Spawnables[i]["positionType"],
-                                   Spawnables[i]["properties"], World)
+            model.addObjectToWorld(Spawnables[i], World)
             done = True
         i -= 1
 
@@ -46,10 +48,7 @@ def popMenu(World, WorldConfig, Spawnables):
     pauseGame(World, WorldConfig, Spawnables)
     for e in Spawnables:
         if 100 <= e["id"] < 200:
-            # le suivant est laissé car on ne peut pas changer la propriété avec spawn
-            model.addObjectToWorld(e["x"], e["y"], e["vx"], e["vy"], e["type"], e["size"], e["positionType"],
-                                   e["properties"] if "menu" in e["properties"] else (e["properties"] + ["menu"]),
-                                   World)
+            model.addObjectToWorld(e, World)
     WorldConfig["displayingMenu"] = ""
 
 
@@ -81,3 +80,33 @@ def unpauseGame(World, WorldConfig, Spawnables):
         if "dontShowPauseSign" not in WorldConfig:
             deleteObjectByTag("pauseSign", World)
             spawnObject(201, World, Spawnables)
+
+
+def dragObject(objID, World, WorldConfig):
+    for i in range(len(World)):
+        if objID == World[i]["id"] and "dragged" not in World[i]["properties"] and "dragging" not in WorldConfig:
+            World[i]["properties"].append("dragged")
+            WorldConfig["dragging"] = ""
+
+
+def undragObject(World, WorldConfig):
+    # verif les distances et tt, si oui faire, sinon rien
+    if "dragging" in WorldConfig:
+        for i in range(len(World)):
+            if "dragged" in World[i]["properties"]:
+                canDo = True
+                for obj in World:  # enlever l'objet courant
+                    if MODELTYPES[obj["type"]]["type"] == 1 and obj["id"] != World[i]["id"]:
+                        d = physics.mesureDistance(World[i]["x"], World[i]["y"], obj["x"], obj["y"]) \
+                            - (MODELTYPES[World[i]["type"]]["r"] + MODELTYPES[obj["type"]]["r"])
+                        if d < SECURITYRADIUSCONST:
+                            canDo = False
+                if canDo:
+                    World[i]["properties"].remove("dragged")
+                    WorldConfig.pop("dragging", None)
+
+
+def processEventsToDo(eventsString, objID, World, WorldConfig, Spawnables):
+    for e in eventsString.split(" "):
+        if e == "drag":
+            dragObject(objID, World, WorldConfig)

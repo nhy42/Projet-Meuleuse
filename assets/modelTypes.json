@@ -5,6 +5,12 @@
 		"mass": 1e10,
 		"friction": 0.4
 	},
+	"playButton": {
+		"type":1,
+		"r": 60,
+		"mass": 0,
+		"friction": 1
+	},
 	"splashText": {
 		"type": 2
 	},

@@ -36,11 +36,18 @@ def internalInitModel(World, WorldConfig, Spawnables, lvlName):
 
 def setObjectsInWorld(World, objects):
     for obj in objects:
-        addObjectToWorld(obj["x"], obj["y"], obj["vx"], obj["vy"], obj["type"], obj["size"], obj["positionType"],
-                         obj["properties"] if "properties" in obj else [], World)
+        addObjectToWorld(obj, World)
 
 
-def addObjectToWorld(x, y, vx, vy, objectType, size, positionType, properties, World=None):
+def addObjectToWorld(obj, World=None):
+    if World is None:
+        World = giveReference(MODELWORLD)
+    objCopy = obj.copy()
+    objCopy["id"] = getNewID()
+    World.append(objCopy)
+
+
+def addObjectToWorldViaValues(x, y, vx, vy, objectType, size, positionType, properties, World=None):
     if World is None:
         World = giveReference(MODELWORLD)
     World.append({"id": getNewID(),
@@ -77,14 +84,27 @@ def internalUpdateModel(World, WorldConfig, Spawnables,  ms):
     # event processing
     processUserEvents(World, WorldConfig, Spawnables, events, mouseX, mouseY)
 
+    for i in range(len(World)):
+        if "dragged" in World[i]["properties"] and \
+                (("displayingMenu" in WorldConfig) == ("menu" in World[i]["properties"])):
+            World[i]["x"] = mouseX
+            World[i]["y"] = mouseY
+
     if "noPhysics" not in WorldConfig:
         updatePositions(World, WorldConfig, ms)
 
 
 def processUserEvents(World, WorldConfig, Spawnables, events, mx, my):
     for e in events:
-        if e[0] == "MOUSEBUTTONDOWN" or e[0] == "MOUSEBUTTONUP":
-            pass
+        if e[0] == "MOUSEBUTTONDOWN":
+            i = len(World) - 1
+            while i >= 0:
+                if "onClick" in World[i]:
+                    if physics.isInside(World[i], mx, my):
+                        interact.processEventsToDo(World[i]["onClick"], World[i]["id"], World, WorldConfig, Spawnables)
+                i -= 1
+        elif e[0] == "MOUSEBUTTONUP":
+            interact.undragObject(World, WorldConfig)
         elif e[0] == "KEYDOWN":
             if e[1] == "BACKSPACE":
                 if "allowReloadKey" in WorldConfig:
@@ -107,8 +127,8 @@ def processCollisionEvent(Object):
 def updatePositions(World, WorldConfig, ms):
     for i in range(len(World)):
         if World[i]["positionType"] != 0 and \
-                (("displayingMenu" in WorldConfig) == ("menu" in World[i]["properties"]) == ("paused" in WorldConfig)):
-            # check if movable and check if menu is opened  todo : opti
+                (("displayingMenu" in WorldConfig) == ("menu" in World[i]["properties"]) == ("paused" in WorldConfig)) \
+                and "dragged" not in World[i]["properties"]:
             # update position
             if World[i]["positionType"] == 1:
 

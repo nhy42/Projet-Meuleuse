@@ -24,7 +24,7 @@ def calcAccelerationOnObject(objectID, World, WorldConfig):  # retourne l'accele
     for i in range(len(World)):
         if World[i]["positionType"] == 0 and World[i]["id"] != objectID \
                 and "noPhysics" not in World[i]["properties"] and "noGrav" not in World[i]["properties"] \
-                and not (("displayingMenu" in WorldConfig) ^ ("menu" in World[i]["properties"])):
+                and not (("displayingMenu" in WorldConfig) ^ ("menu" in World[i]["properties"])) and "dragged" not in World[i]["properties"]:
 
             accToAdd = accOnObject1From2(currentObject["x"], currentObject["y"], currentObject["mass"],
                                          World[i]["x"], World[i]["y"], MODELTYPES[World[i]["type"]]["mass"])
@@ -55,8 +55,12 @@ def isCollidingSomething(World, x1, y1, r1):
     return []  # pas de collision
 
 
-def isInside(x1, y1, r1, x2, y2):
-    return mesureDistance(x1, y1, x2, y2) < r1
+def isInside(obj, x2, y2):
+    if MODELTYPES[obj["type"]]["type"] == 1:
+        return mesureDistance(obj["x"], obj["y"], x2, y2) < MODELTYPES[obj["type"]]["r"]
+    else:  # type 2
+        print("panic, todo type 2")  # todo
+        return False
 
 
 def calcCollision(x1, y1, r1, vx, vy, x2, y2, r2, fric, ms):  # fric = friction
