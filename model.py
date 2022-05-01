@@ -5,7 +5,6 @@ import level
 import file
 import event
 
-
 MODELWORLD = []
 SPAWNABLES = []
 WORLDCONFIG = {}
@@ -47,20 +46,6 @@ def addObjectToWorld(obj, World=None):
     World.append(objCopy)
 
 
-def addObjectToWorldViaValues(x, y, vx, vy, objectType, size, positionType, properties, World=None):
-    if World is None:
-        World = giveReference(MODELWORLD)
-    World.append({"id": getNewID(),
-                  "x": x,
-                  "y": y,
-                  "vx": vx,
-                  "vy": vy,
-                  "type": objectType,
-                  "size": size,
-                  "positionType": positionType,
-                  "properties": properties})
-
-
 def setWorldconfig(WorldConfig, configToImport, lvlName):
     WorldConfig["lvlName"] = lvlName
     for rule in configToImport:
@@ -76,13 +61,15 @@ def updateModel(ms):
     return internalUpdateModel(MODELWORLD, WORLDCONFIG, SPAWNABLES, ms)
 
 
-def internalUpdateModel(World, WorldConfig, Spawnables,  ms):
+def internalUpdateModel(World, WorldConfig, Spawnables, ms):
     # get events
     events = view.getEventsParsed()
     mouseX, mouseY = view.getMousePos()
 
     # event processing
-    processUserEvents(World, WorldConfig, Spawnables, events, mouseX, mouseY)
+    leavingThisUpdate = processUserEvents(World, WorldConfig, Spawnables, events, mouseX, mouseY)
+    if leavingThisUpdate:
+        return 0
 
     for i in range(len(World)):
         if "dragged" in World[i]["properties"] and \
@@ -101,7 +88,10 @@ def processUserEvents(World, WorldConfig, Spawnables, events, mx, my):
             while i >= 0:
                 if "onClick" in World[i]:
                     if physics.isInside(World[i], mx, my):
-                        interact.processEventsToDo(World[i]["onClick"], World[i]["id"], World, WorldConfig, Spawnables)
+                        leaveThisUpdate = interact.processEventsToDo(World[i]["onClick"], World[i]["id"],
+                                                                     World, WorldConfig, Spawnables)
+                        if leaveThisUpdate:
+                            return True
                 i -= 1
         elif e[0] == "MOUSEBUTTONUP":
             interact.undragObject(World, WorldConfig)

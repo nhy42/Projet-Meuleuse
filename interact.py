@@ -108,5 +108,10 @@ def undragObject(World, WorldConfig):
 
 def processEventsToDo(eventsString, objID, World, WorldConfig, Spawnables):
     for e in eventsString.split(" "):
+        splited = e.split("_")
         if e == "drag":
             dragObject(objID, World, WorldConfig)
+        if splited[0] == "loadLevel":
+            model.initModel(splited[1])
+            return True
+            # on arrete l'iteration pour ne pas boucler sur des éléments du nouveau niveau

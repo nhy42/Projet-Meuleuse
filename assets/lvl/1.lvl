@@ -1,0 +1,10 @@
+{
+	"objects": [
+		{"x": 600, "y": 448, "vx":0, "vy":0, "type":"ball", "size": 1, "positionType":0, "properties": [""], "onClick":"loadLevel_splashscreen"}
+	],
+	"spawnables": [
+	],
+	"rules": [
+	],
+	"background": "assets/img/bg720.png"
+}
