@@ -46,7 +46,8 @@ def isCollidingSomething(World, x1, y1, r1):
         # todo : check collisions avec carré
         if World[i]["positionType"] == 0 \
                 and "noPhysics" not in World[i]["properties"] \
-                and "noCol" not in World[i]["properties"]:
+                and "noCol" not in World[i]["properties"] \
+                and "dragged" not in World[i]["properties"]:
             x2, y2 = World[i]["x"], World[i]["y"]
             d = mesureDistance(x1, y1, x2, y2)
             r2 = MODELTYPES[World[i]["type"]]["r"]
