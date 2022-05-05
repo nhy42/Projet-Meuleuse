@@ -2,10 +2,10 @@
 	"objects": [
 		{"x": 300, "y": 448, "vx":0, "vy":-50, "type":"vert", "size": 1, "positionType":1, "properties": []},
 
-		{"x": 600, "y": 448, "vx":0, "vy":0, "type":"ball", "size": 1, "positionType":0, "properties": [""], "onClick":"loadLevel_1"},
-		{"x": 550, "y": 550, "vx":0, "vy":0, "type":"playButton", "size": 1, "positionType":0, "properties": ["noPhysics"], "onClick":"drag"},
+		{"x": 600, "y": 448, "vx":0, "vy":0, "type":"ball", "size": 1, "positionType":0, "properties": [""], "onClick":"drag"},
+		{"x": 550, "y": 550, "vx":0, "vy":0, "type":"playButton", "size": 1, "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_1"},
 		{"x": 100, "y": 110, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0, "properties": []},
-		{"x": 1265, "y": 15, "vx":0, "vy":0, "type":"playSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
+		{"x": 1265, "y": 15, "vx":0, "vy":0, "type":"pauseSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
 	],
 	"spawnables": [
 		{"id":100, "x": 600, "y": 448, "vx":0, "vy":-50, "type":"vert", "size": 1, "positionType":1, "properties": ["menu"]},

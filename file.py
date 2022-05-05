@@ -12,5 +12,3 @@ def saveIntoJSON(path, dictionary):
     with open(path, "w") as f:
         f.write(dataToWrite)
     return 0
-
-

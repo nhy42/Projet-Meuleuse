@@ -109,9 +109,9 @@ def processUserEvents(World, WorldConfig, Spawnables, events, mx, my):
             pass  # pour future utilisation (ou pas ?)
 
 
-def processCollisionEvent(Object):
-    pass
-    # je sais pas ce que tu es mais en tout cas j'ai perdu l'idée, ca c'est sur
+# def processCollisionEvent(Object):
+#     pass
+#     # je sais pas ce que tu es mais en tout cas j'ai perdu l'idée, ca c'est sur
 
 
 def updatePositions(World, WorldConfig, ms):

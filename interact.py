@@ -111,7 +111,15 @@ def processEventsToDo(eventsString, objID, World, WorldConfig, Spawnables):
         splited = e.split("_")
         if e == "drag":
             dragObject(objID, World, WorldConfig)
-        if splited[0] == "loadLevel":
+        elif splited[0] == "loadLevel":
             model.initModel(splited[1])
             return True
             # on arrete l'iteration pour ne pas boucler sur des éléments du nouveau niveau
+        elif splited[0] == "spawnObject":
+            for oID in splited[1:]:
+                spawnObject(oID, World, Spawnables)
+        elif splited[0] == "delObject":
+            for tag in splited[1:]:
+                deleteObjectByTag(tag, World)
+        elif splited[0] == "":
+            pass
