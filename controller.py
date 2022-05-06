@@ -22,7 +22,6 @@ def update():
     ms = view.getNextTick()
     # print(ms)
     # update the model
-    view.getEvents()
     model.updateModel(ms)
     # render
     view.update()

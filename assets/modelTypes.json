@@ -5,6 +5,12 @@
 		"mass": 1e10,
 		"friction": 0.4
 	},
+	"playButton": {
+		"type":1,
+		"r": 60,
+		"mass": 0,
+		"friction": 1
+	},
 	"splashText": {
 		"type": 2
 	},
@@ -12,6 +18,18 @@
 		"type": 1,
 		"r": 25,
 		"mass": 1e10,
-		"friction": 0.4
+		"friction": 0.65
+	},
+	"invisiball": {
+		"type": 1,
+		"r": 25,
+		"mass": 1e10,
+		"friction": 0.65
+	},
+	"pauseSign": {
+		"type": 2
+	},
+	"playSign": {
+		"type": 2
 	}
 }

@@ -3,6 +3,7 @@ from datetime import datetime
 
 
 currentLog = datetime.now().strftime("%Y-%m-%d_%H.%M.%S")
+WRITEINFILE = False
 
 
 def currentTimeStr():
@@ -10,8 +11,9 @@ def currentTimeStr():
 
 
 def saveRecord(recordType, timeSTR, message):
-    with open(f"log/{currentLog}.log", "a") as f:
-        f.write("{} {} > {}\n".format(recordType, timeSTR, message))
+    if WRITEINFILE:
+        with open(f"log/{currentLog}.log", "a") as f:
+            f.write("{} {} > {}\n".format(recordType, timeSTR, message))
 
 
 def log(message):
