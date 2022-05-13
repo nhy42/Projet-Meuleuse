@@ -1,11 +1,9 @@
 {
 	"objects": [
-		{"x": 300, "y": 448, "vx":0, "vy":-50, "type":"vert", "size": 1, "positionType":1, "properties": []},
-
-		{"x": 600, "y": 448, "vx":0, "vy":0, "type":"ball", "size": 1, "positionType":0, "properties": [""], "onClick":"drag"},
-		{"x": 550, "y": 550, "vx":0, "vy":0, "type":"playButton", "size": 1, "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_1"},
-		{"x": 100, "y": 110, "vx":0, "vy":0, "type":"vert", "size": 1, "positionType":0, "properties": []},
-		{"x": 1265, "y": 15, "vx":0, "vy":0, "type":"pauseSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
+		{"x": 300, "y": 448, "vx":0, "vy":-50, "type":"mars", "size": 1, "positionType":0, "properties": [], "onClick":"drag"},
+		{"x": 500, "y": 400, "vx":50, "vy":0, "type": "coeur", "size": 1, "positionType":0, "properties": [], "onClick":"drag"},
+		{"x": 600, "y": 500, "vx":0, "vy":50, "type":"terre", "size":1, "positionType":0, "properties":[], "onClick":"drag"},
+		{"x": 0, "y": 720, "vx":10, "vy":-50, "type":"ball", "size":1, "positionType":1, "properties":[] }
 	],
 	"spawnables": [
 		{"id":100, "x": 600, "y": 448, "vx":0, "vy":-50, "type":"vert", "size": 1, "positionType":1, "properties": ["menu"]},
@@ -14,7 +12,7 @@
 		{"id":201, "x": 1265, "y": 15, "vx":0, "vy":0, "type":"playSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
 	],
 	"rules": [
-		"allowReloadKey", "allowPauseKey", "allowMenuKey", "dontShowPauseSign_", "paused"
+		"allowReloadKey", "allowPauseKey", "allowMenuKey", "dontShowPauseSign_"
 	],
 	"background": "assets/img/bg720.png"
 }
