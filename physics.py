@@ -103,6 +103,27 @@ def calcCollisionMoment(xi, yi, r1, vx, vy, x2, y2, r2):
         return 0
 
 
+def isCollidingWithSegment(r, x, y, x1, y1, x2, y2):
+    # courtesy of ✨ Maelwenn Labidurie ✨
+    xmimiddle = (x1 + x2) / 2
+    ymiddle = (y1 + y2) / 2
+    xv = xmimiddle - x1
+    yv = ymiddle - y1
+    distanceWith1 = ((x - x1) * xv + (y - y1) * yv) / (math.sqrt(xv ** 2 + yv ** 2))
+    distanceWith2 = -(((x - x2) * xv + (y - y2) * yv) / (math.sqrt(xv ** 2 + yv ** 2)))
+    distanceBetween1And2 = mesureDistance(x1, y1, x2, y2)
+    if distanceWith1 > distanceBetween1And2 + r or distanceWith2 > distanceBetween1And2 + r:
+        return False
+    else:
+        xh = x1 + (distanceWith1 / (math.sqrt(xv ** 2 + yv ** 2))) * xv
+        yh = y1 + (distanceWith1 / (math.sqrt(xv ** 2 + yv ** 2))) * yv
+        distanceBetweenCircleAndProject = mesureDistance(x, y, xh, yh)
+        if distanceBetweenCircleAndProject < r:
+            return True
+        else:
+            return False
+
+
 def mesureDistance(x1, y1, x2, y2):
     return math.sqrt((x2 - x1) ** 2 + ((y2 - y1) ** 2))
 
