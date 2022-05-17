@@ -100,7 +100,7 @@ def internalRefreshView(Sprites, Viewtypes):
     modelWord = getModelWorld()  # ceci est une référence
     for obj in modelWord:
         objType = obj["type"]
-        if "invisible" not in VIEWTYPES[objType]:
+        if "invisible" not in VIEWTYPES[objType] or "noRender" in obj["properties"]:
             DISPLAY.blit(Sprites[objType], (obj["x"] - Viewtypes[objType]["sizeX"] / 2,
                                             obj["y"] - Viewtypes[objType]["sizeY"] / 2))
     pygame.display.flip()

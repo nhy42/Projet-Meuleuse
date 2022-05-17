@@ -106,6 +106,16 @@ def undragObject(World, WorldConfig):
                     WorldConfig.pop("dragging", None)
 
 
+def addRule(WorldConfig, rule):
+    if rule not in WorldConfig:
+        WorldConfig[rule] = ""
+
+
+def delRule(WorldConfig, rule):
+    if rule in WorldConfig:
+        del WorldConfig[rule]
+
+
 def processEventsToDo(eventsString, objID, World, WorldConfig, Spawnables):
     for e in eventsString.split(" "):
         splited = e.split("_")
@@ -121,5 +131,9 @@ def processEventsToDo(eventsString, objID, World, WorldConfig, Spawnables):
         elif splited[0] == "delObject":
             for tag in splited[1:]:
                 deleteObjectByTag(tag, World)
-        elif splited[0] == "":
-            pass
+        elif splited[0] == "addRules":
+            for rule in splited[1:]:
+                addRule(WorldConfig, rule)
+        elif splited[0] == "delRules":
+            for rule in splited[1:]:
+                delRule(WorldConfig, rule)
