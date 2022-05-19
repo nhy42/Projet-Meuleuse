@@ -19,5 +19,8 @@
 		"sizeX":80,
 		"sizeY":80,
 		"spritePath": "assets/img/terre80.png"
+	}, 
+	"segment": {
+		"invisible": 1
 	}
 }

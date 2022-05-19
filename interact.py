@@ -116,7 +116,13 @@ def delRule(WorldConfig, rule):
         del WorldConfig[rule]
 
 
-def processEventsToDo(eventsString, objID, World, WorldConfig, Spawnables):
+def processEventsToDo(eventsString, objID, World=None, WorldConfig=None, Spawnables=None):
+    if World is None:
+        World = model.giveWorld()
+    if WorldConfig is None:
+        WorldConfig = model.giveWorldConfig()
+    if Spawnables is None:
+        Spawnables = model.giveSpawnables()
     for e in eventsString.split(" "):
         splited = e.split("_")
         if e == "drag":

@@ -22,5 +22,8 @@
 		"r":40,
 		"mass":3e10,
 		"friction":0.5
+	}, 
+	"segment": {
+		"type": 2
 	}
 }
