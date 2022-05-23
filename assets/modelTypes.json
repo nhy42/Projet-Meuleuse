@@ -44,7 +44,7 @@
 	"singularity": {
 		"type": 1,
 		"r":10,
-		"mass":3.5e10,
+		"mass":5e10,
 		"friction":0
 	},
 	"white_dwarf": {
