@@ -50,7 +50,7 @@
 	"white_dwarf": {
 		"type": 1,
 		"r":80,
-		"mass":3.5e10,
+		"mass":8e10,
 		"friction":0
 	},
 	"playSign": {
@@ -68,7 +68,7 @@
 	"red_dwarf": {
 		"type": 1,
 		"r":75,
-		"mass":3.5e10,
+		"mass":6e10,
 		"friction":0
 	},
 	"sun": {
