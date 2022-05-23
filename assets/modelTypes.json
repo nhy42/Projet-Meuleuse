@@ -25,5 +25,32 @@
 	}, 
 	"segment": {
 		"type": 2
+	},
+	"jupiter": {
+		"type": 1,
+		"r":60,
+		"mass":2.5e10,
+		"friction":0.9
+	},
+	"uranus": {
+		"type": 1,
+		"r":40,
+		"mass":1.5e10,
+		"friction":0.5
+	},
+	"bh_aura": {
+		"type": 3
+	},
+	"singularity": {
+		"type": 1,
+		"r":10,
+		"mass":3.5e10,
+		"friction":0
+	},
+	"white_dwarf": {
+		"type": 1,
+		"r":80,
+		"mass":3.5e10,
+		"friction":0
 	}
 }
