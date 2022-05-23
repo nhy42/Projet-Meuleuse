@@ -6,6 +6,7 @@ import interact
 MODELTYPES = file.readJSONFile("assets/modelTypes.json")
 # G = 6.6743e-11  # N*m^2*kg^-2
 G = 6.6743e-5
+G = 1e-4
 # G est sujet a modification pour des raisons de gamedesign
 
 
