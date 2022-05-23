@@ -125,8 +125,9 @@ def updatePositions(World, WorldConfig, ms):
                 tempX = World[i]["x"] + World[i]["vx"] * ms / 1000
                 tempY = World[i]["y"] + World[i]["vy"] * ms / 1000
 
-                collided = physics.isCollidingSomething(World, tempX, tempY, MODELTYPES[World[i]["type"]]["r"])
-                if len(collided) != 0:
+                collided = physics.isCollidingSomething(World, tempX, tempY, MODELTYPES[World[i]["type"]]["r"], World[i]["type"], World[i]["id"])
+
+                if len(collided) == 3:
                     collisionResult = physics.calcCollision(World[i]["x"], World[i]["y"],
                                                             MODELTYPES[World[i]["type"]]["r"],
                                                             World[i]["vx"], World[i]["vy"],
@@ -135,6 +136,8 @@ def updatePositions(World, WorldConfig, ms):
                     # ^ retourne [newX, newY, newVX, newVY]
                     World[i]["x"], World[i]["y"] = collisionResult[0], collisionResult[1]
                     World[i]["vx"], World[i]["vy"] = collisionResult[2], collisionResult[3]
+                elif len(collided) == 1:  # si des events collision ont été cassant
+                    return 0
                 else:
                     World[i]["x"] = tempX
                     World[i]["y"] = tempY
