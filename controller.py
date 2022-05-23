@@ -40,7 +40,7 @@ def firstUse():
 def init():
     # restore les paramètres
     view.initView((1920, 1080))
-    model.initModel("splashscreen")
+    model.initModel("3")
     view.update()
 
 
