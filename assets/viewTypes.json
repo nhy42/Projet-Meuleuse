@@ -22,5 +22,57 @@
 	}, 
 	"segment": {
 		"invisible": 1
+	},
+	"jupiter": {
+		"sizeX":120,
+		"sizeY":120,
+		"spritePath": "assets/img/jupiter120.png"
+	},
+	"uranus": {
+		"sizeX":80,
+		"sizeY":80,
+		"spritePath": "assets/img/uranus80.png"
+	},
+	"bh_aura": {
+		"sizeX":80,
+		"sizeY":80,
+		"spritePath": "assets/img/bh_aura.png"
+	},
+	"singularity": {
+		"sizeX":20,
+		"sizeY":20,
+		"spritePath": "assets/img/singularity.png"
+	},
+	"white_dwarf": {
+		"sizeX":180,
+		"sizeY":180,
+		"spritePath": "assets/img/white_dwarf180.png"
+	},
+	"playSign": {
+		"sizeX":40,
+		"sizeY":40,
+		"spritePath": "assets/img/playSign.png"
+	},
+	"pauseSign": {
+		"sizeX":40,
+		"sizeY":40,
+		"spritePath": "assets/img/pauseSign.png"
+	},
+	"splashText": {
+		"sizeX":200,
+		"sizeY":500,
+		"spritePath": "assets/img/splashText.png"
+	},
+	"red_dwarf": {
+		"sizeX":150,
+		"sizeY":150,
+		"spritePath": "assets/img/redDwarf.png"
+	},
+	"sun": {
+		"sizeX":130,
+		"sizeY":130,
+		"spritePath": "assets/img/sun.png"
 	}
+
+
 }
