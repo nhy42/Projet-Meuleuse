@@ -52,5 +52,11 @@
 		"r":80,
 		"mass":3.5e10,
 		"friction":0
+	},
+	"playSign": {
+		"type": 3
+	},
+	"pauseeSign": {
+		"type": 3
 	}
 }
