@@ -41,7 +41,7 @@ def firstUse():
 def init():
     # restore les paramètres
     view.initView((1920, 1080))
-    model.initModel("5")
+    model.initModel("lvlmenu")
     view.update()
 
 
