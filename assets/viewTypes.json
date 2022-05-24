@@ -119,8 +119,8 @@
 		"spritePath": "assets/img/backb.png"
 	},
 	"icon": {
-		"sizeX": 512,
-		"sizeY": 512,
-		"spritePath": "assets/img/icone.png"
+		"sizeX": 128,
+		"sizeY": 128,
+		"spritePath": "assets/img/icone128.png"
 	}
 }
