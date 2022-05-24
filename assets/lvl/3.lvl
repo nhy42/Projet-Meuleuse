@@ -13,7 +13,7 @@
 		{"id":200, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"pauseSign", "positionType":0, "properties": ["pauseSign", "noPhysics"]},
 		{"id":201, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"playSign", "positionType":0, "properties": ["pauseSign", "noPhysics"]},
 		{"id":500, "x": 960, "y": 500, "vx":0, "vy":0, "type":"won", "positionType":0, "properties": ["noPhysics"]},
-		{"id":501, "x": 800, "y": 700, "vx":0, "vy":0, "type":"menuButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_menu"},
+		{"id":501, "x": 800, "y": 700, "vx":0, "vy":0, "type":"menuButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_lvlmenu"},
 		{"id":502, "x": 1120, "y": 700, "vx":0, "vy":0, "type":"leaveButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_exit"}
 	],
 	"rules": [
