@@ -58,7 +58,7 @@ def initModel(lvlName):
 
 
 def updateModel(ms):
-    return internalUpdateModel(MODELWORLD, WORLDCONFIG, SPAWNABLES, ms)
+    return False if internalUpdateModel(MODELWORLD, WORLDCONFIG, SPAWNABLES, ms) == -1 else True
 
 
 def internalUpdateModel(World, WorldConfig, Spawnables, ms):
@@ -69,7 +69,10 @@ def internalUpdateModel(World, WorldConfig, Spawnables, ms):
     # event processing
     leavingThisUpdate = processUserEvents(World, WorldConfig, Spawnables, events, mouseX, mouseY)
     if leavingThisUpdate:
-        return 0
+        return 1
+    for e in events:
+        if e[0] == "LEAVE":
+            return -1
 
     for i in range(len(World)):
         if "dragged" in World[i]["properties"] and \

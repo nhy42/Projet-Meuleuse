@@ -70,6 +70,8 @@ def getEventsParsed():
                 elif e.key == pygame.K_SPACE:
                     daEvent.append("KEYUP")
                     daEvent.append("SPACE")
+            elif e.type == pygame.QUIT:
+                daEvent.append("LEAVE")
             if len(daEvent) > 0:
                 parsedEvents.append(daEvent)
         return parsedEvents

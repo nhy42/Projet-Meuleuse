@@ -12,7 +12,7 @@ def run():
     keepRunning = True
     event.log("Main loop starting")
     while keepRunning:
-        update()
+        keepRunning = update()
     event.log("End of main loop")
     view.quitGame()
 
@@ -22,9 +22,10 @@ def update():
     ms = view.getNextTick()
     # print(ms)
     # update the model
-    model.updateModel(ms)
+    keep = model.updateModel(ms)
     # render
     view.update()
+    return keep
 
 
 def firstUse():
