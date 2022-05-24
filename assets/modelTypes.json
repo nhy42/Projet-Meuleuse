@@ -82,13 +82,13 @@
 	},
 	"menuButton": {
 		"type": 1,
-		"r":65,
+		"r":90,
 		"mass":0,
 		"friction":0
 	},
 	"leaveButton": {
 		"type": 1,
-		"r":65,
+		"r":90,
 		"mass":0,
 		"friction":0
 	}
