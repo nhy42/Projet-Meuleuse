@@ -1,0 +1,17 @@
+{
+	"objects": [
+		{"x": 1630, "y": 540, "vx":0, "vy":0, "type":"bh_aura", "positionType":0, "properties": ["noPhysics"]},
+		{"x": 1630, "y": 540, "vx":0, "vy":0, "type":"singularity", "positionType":0, "properties": [""], "onCollision":"ball loadLevel_splashscreen"},
+		{"x": 960, "y": 970, "vx":0, "vy":0, "type":"singularity", "positionType":0, "properties": [""]},
+        {"x": 290, "y": 540, "vx":0, "vy":0, "type":"ball", "positionType":1, "properties": [""]},
+        {"x": 1830, "y": 950, "vx":0, "vy":0, "type":"coeur", "positionType":0, "properties": [""], "onClick":"drag"}
+    ],
+	"spawnables": [
+		{"id":200, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"pauseSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]},
+		{"id":201, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"playSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
+	],
+	"rules": [
+		"allowPauseKey", "paused", "allowReloadKey"
+	],
+	"background": "assets/img/bg5.png"
+}

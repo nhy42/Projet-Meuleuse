@@ -29,7 +29,7 @@
 	"jupiter": {
 		"type": 1,
 		"r":60,
-		"mass":2.5e10,
+		"mass":3e10,
 		"friction":0.9
 	},
 	"uranus": {

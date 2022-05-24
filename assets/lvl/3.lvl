@@ -4,8 +4,8 @@
 		{"x": 960, "y": 540, "vx":0, "vy":-150, "type":"singularity", "positionType":0, "properties": [""], "onCollision":"ball loadLevel_splashscreen"},
         {"x": 960, "y": 640, "vx":0, "vy":400, "type":"ball", "positionType":1, "properties": [""]},
         {"x": 1063, "y": 615, "x2": 730, "y2":  540, "type":"segment", "positionType":0, "properties": [""], "onCollision":"ball loadLevel_3"},
-		{"x": 1700, "y": 950, "vx":0, "vy":0, "type":"coeur", "positionType":0, "properties": [""], "onClick":"drag"},
-		{"x": 1500, "y": 950, "vx":0, "vy":0, "type":"mars", "positionType":0, "properties": [""], "onClick":"drag"}
+		{"x": 1800, "y": 950, "vx":0, "vy":0, "type":"coeur", "positionType":0, "properties": [""], "onClick":"drag"},
+		{"x": 1650, "y": 950, "vx":0, "vy":0, "type":"mars", "positionType":0, "properties": [""], "onClick":"drag"}
 	],
 	"spawnables": [
 		{"id":200, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"pauseSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]},
