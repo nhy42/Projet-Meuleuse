@@ -1,10 +1,12 @@
 import event
 import math
 import file
+import interact
 
 MODELTYPES = file.readJSONFile("assets/modelTypes.json")
 # G = 6.6743e-11  # N*m^2*kg^-2
 G = 6.6743e-5
+G = 1e-4
 # G est sujet a modification pour des raisons de gamedesign
 
 
@@ -22,7 +24,7 @@ def calcAccelerationOnObject(objectID, World, WorldConfig):  # retourne l'accele
             currentObject["type"] = World[i]["type"]
             # if pour les non-spheriques ^ todo
     for i in range(len(World)):
-        if World[i]["positionType"] == 0 and World[i]["id"] != objectID \
+        if World[i]["positionType"] == 0 and World[i]["id"] != objectID and MODELTYPES[World[i]["type"]]["type"] != 2 \
                 and "noPhysics" not in World[i]["properties"] and "noGrav" not in World[i]["properties"] \
                 and not (("displayingMenu" in WorldConfig) ^ ("menu" in World[i]["properties"])) and "dragged" not in World[i]["properties"]:
 
@@ -41,18 +43,33 @@ def accOnObject1From2(x1, y1, m1, x2, y2, m2):  # return [ax, ay]
     return [ax, ay]
 
 
-def isCollidingSomething(World, x1, y1, r1):
+def isCollidingSomething(World, x1, y1, r1, objType, objID):
     for i in range(len(World)):
-        # todo : check collisions avec carré
-        if World[i]["positionType"] == 0 \
-                and "noPhysics" not in World[i]["properties"] \
-                and "noCol" not in World[i]["properties"] \
-                and "dragged" not in World[i]["properties"]:
-            x2, y2 = World[i]["x"], World[i]["y"]
-            d = mesureDistance(x1, y1, x2, y2)
-            r2 = MODELTYPES[World[i]["type"]]["r"]
-            if d < r2 + r1:
-                return [x2, y2, r2]
+        if MODELTYPES[World[i]["type"]]["type"] == 1:
+            # todo : check collisions avec carré
+            if World[i]["positionType"] == 0 \
+                    and "noPhysics" not in World[i]["properties"] \
+                    and "noCol" not in World[i]["properties"] \
+                    and "dragged" not in World[i]["properties"]:
+                x2, y2 = World[i]["x"], World[i]["y"]
+                d = mesureDistance(x1, y1, x2, y2)
+                r2 = MODELTYPES[World[i]["type"]]["r"]
+                if d < r2 + r1:
+                    if "onCollision" in World[i]:
+                        splited = World[i]["onCollision"].split(" ")
+                        if splited[0] == objType:
+                            if interact.processEventsToDo(" ".join(splited[1:]), objID, World=World):
+                                return [1]
+                    return [x2, y2, r2]
+        elif MODELTYPES[World[i]["type"]]["type"] == 2:
+            xs1, ys1 = World[i]["x"], World[i]["y"]
+            xs2, ys2 = World[i]["x2"], World[i]["y2"]
+            if isCollidingWithSegment(x1, y1, r1, xs1, ys1, xs2, ys2):
+                if "onCollision" in World[i]:
+                    splited = World[i]["onCollision"].split(" ")
+                    if splited[0] == objType:
+                        if interact.processEventsToDo(" ".join(splited[1:]), objID, World=World):
+                            return [1]
     return []  # pas de collision
 
 
@@ -101,6 +118,27 @@ def calcCollisionMoment(xi, yi, r1, vx, vy, x2, y2, r2):
     else:
         event.error(f"No rac found for polynome. DEBUG infos : {xi, yi, r1, vx, vy, x2, y2, r2}")
         return 0
+
+
+def isCollidingWithSegment(x, y, r, x1, y1, x2, y2):
+    # courtesy of ✨ Maelwenn Labidurie ✨
+    xmimiddle = (x1 + x2) / 2
+    ymiddle = (y1 + y2) / 2
+    xv = xmimiddle - x1
+    yv = ymiddle - y1
+    distanceWith1 = ((x - x1) * xv + (y - y1) * yv) / (math.sqrt(xv ** 2 + yv ** 2))
+    distanceWith2 = -(((x - x2) * xv + (y - y2) * yv) / (math.sqrt(xv ** 2 + yv ** 2)))
+    distanceBetween1And2 = mesureDistance(x1, y1, x2, y2)
+    if distanceWith1 > distanceBetween1And2 + r or distanceWith2 > distanceBetween1And2 + r:
+        return False
+    else:
+        xh = x1 + (distanceWith1 / (math.sqrt(xv ** 2 + yv ** 2))) * xv
+        yh = y1 + (distanceWith1 / (math.sqrt(xv ** 2 + yv ** 2))) * yv
+        distanceBetweenCircleAndProject = mesureDistance(x, y, xh, yh)
+        if distanceBetweenCircleAndProject < r:
+            return True
+        else:
+            return False
 
 
 def mesureDistance(x1, y1, x2, y2):

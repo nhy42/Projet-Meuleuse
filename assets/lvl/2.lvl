@@ -3,8 +3,8 @@
 		{"x": 1800, "y": 100, "vx":0, "vy":-200, "type":"bh_aura", "positionType":0, "properties": ["noPhysics"]},
 		{"x": 118, "y": 950, "vx":0, "vy":-100, "type":"ball", "positionType":1, "properties": [""]},
 		{"x": 1800, "y": 100, "vx":0, "vy":-150, "type":"singularity", "positionType":0, "properties": [""], "onCollision":"ball spawnObject_500_501_502 addRules_paused_dontShowPauseSign delRules_allowPauseKey_allowReloadKey_allowMenuKey"},
-		{"x": 1650, "y": 950, "vx":0, "vy":0, "type":"terre", "positionType":0, "properties": [""], "onClick":"drag"},
-		{"x": 1800, "y": 950, "vx":0, "vy":0, "type":"sun", "positionType":0, "properties": [""], "onClick":"drag"}
+		{"x": 1800, "y": 950, "vx":0, "vy":0, "type":"white_dwarf", "positionType":0, "properties": [""], "onClick":"drag"},
+        {"x": 705, "y": 160, "vx":0, "vy":0, "type":"uranus", "positionType":0, "properties": [""]}
 	],
 	"spawnables": [
 		{"id":101, "x": 800, "y": 540, "vx":0, "vy":0, "type":"menuButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_lvlmenu"},

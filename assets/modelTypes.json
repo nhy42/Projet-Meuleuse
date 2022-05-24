@@ -1,35 +1,143 @@
 {
 	"ball": {
 		"type": 1,
-		"r": 50,
+		"r": 25,
 		"mass": 1e10,
 		"friction": 0.4
 	},
-	"playButton": {
-		"type":1,
-		"r": 60,
-		"mass": 0,
-		"friction": 1
+	"mars": {
+		"type": 1,
+		"r": 50,
+		"mass": 2e10,
+		"friction": 0.2
 	},
-	"splashText": {
+	"coeur":{
+		"type": 1,
+		"r": 50,
+		"mass": 1e10,
+		"friction":0.7
+	},
+	"terre": {
+		"type": 1,
+		"r":40,
+		"mass":3e10,
+		"friction":0.5
+	}, 
+	"segment": {
 		"type": 2
 	},
-	"vert": {
+	"jupiter": {
 		"type": 1,
-		"r": 25,
-		"mass": 1e10,
-		"friction": 0.65
+		"r":60,
+		"mass":3e10,
+		"friction":0.9
 	},
-	"invisiball": {
+	"uranus": {
 		"type": 1,
-		"r": 25,
-		"mass": 1e10,
-		"friction": 0.65
+		"r":40,
+		"mass":1.5e10,
+		"friction":0.5
 	},
-	"pauseSign": {
-		"type": 2
+	"bh_aura": {
+		"type": 3
+	},
+	"singularity": {
+		"type": 1,
+		"r":10,
+		"mass":1e11,
+		"friction":0
+	},
+	"white_dwarf": {
+		"type": 1,
+		"r":80,
+		"mass":8e10,
+		"friction":0
 	},
 	"playSign": {
-		"type": 2
+		"type": 3
+	},
+	"pauseSign": {
+		"type": 3
+	},
+	"splashText": {
+		"type": 1,
+		"r":10,
+		"mass":0,
+		"friction":0
+	},
+	"red_dwarf": {
+		"type": 1,
+		"r":75,
+		"mass":6e10,
+		"friction":0
+	},
+	"sun": {
+		"type": 1,
+		"r":65,
+		"mass":7e10,
+		"friction":0
+	},
+	"won": {
+		"type":3
+	},
+	"menuButton": {
+		"type": 1,
+		"r":90,
+		"mass":0,
+		"friction":0
+	},
+	"leaveButton": {
+		"type": 1,
+		"r":90,
+		"mass":0,
+		"friction":0
+	},
+	"1b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"2b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"3b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"4b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"5b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"backb": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"icon": {
+		"type": 3
+	},
+	"playb": {
+		"type": 1,
+		"r": 60,
+		"mass": 0,
+		"friction": 0
+	},
+	"astropy": {
+		"type": 3
 	}
 }

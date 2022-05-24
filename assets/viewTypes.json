@@ -1,35 +1,136 @@
 {
 	"ball": {
-		"sizeX": 100,
-		"sizeY": 100,
+		"sizeX": 50,
+		"sizeY": 50,
 		"spritePath": "assets/img/ball.png"
 	},
-	"playButton": {
+	"mars": {
+		"sizeX": 100,
+		"sizeY": 100,
+		"spritePath": "assets/img/mars100.png"
+	},
+	"coeur": {
+		"sizeX":100,
+		"sizeY":100,
+		"spritePath": "assets/img/coeur100.png"
+
+	},
+	"terre": {
+		"sizeX":80,
+		"sizeY":80,
+		"spritePath": "assets/img/terre80.png"
+	}, 
+	"segment": {
+		"invisible": 1
+	},
+	"jupiter": {
+		"sizeX":120,
+		"sizeY":120,
+		"spritePath": "assets/img/jupiter120.png"
+	},
+	"uranus": {
+		"sizeX":80,
+		"sizeY":80,
+		"spritePath": "assets/img/uranus80.png"
+	},
+	"bh_aura": {
+		"sizeX":80,
+		"sizeY":80,
+		"spritePath": "assets/img/bh_aura.png"
+	},
+	"singularity": {
+		"sizeX":20,
+		"sizeY":20,
+		"spritePath": "assets/img/singularity.png"
+	},
+	"white_dwarf": {
+		"sizeX":180,
+		"sizeY":180,
+		"spritePath": "assets/img/white_dwarf180.png"
+	},
+	"playSign": {
+		"sizeX":40,
+		"sizeY":40,
+		"spritePath": "assets/img/playSign.png"
+	},
+	"pauseSign": {
+		"sizeX":40,
+		"sizeY":40,
+		"spritePath": "assets/img/pauseSign.png"
+	},
+	"splashText": {
+		"sizeX":200,
+		"sizeY":500,
+		"spritePath": "assets/img/splashText.png"
+	},
+	"red_dwarf": {
+		"sizeX":150,
+		"sizeY":150,
+		"spritePath": "assets/img/redDwarf.png"
+	},
+	"sun": {
+		"sizeX":130,
+		"sizeY":130,
+		"spritePath": "assets/img/sun.png"
+	},
+	"won": {
+		"sizeX":400,
+		"sizeY":130,
+		"spritePath": "assets/img/won.png"
+	},
+	"menuButton": {
+		"sizeX":180,
+		"sizeY":180,
+		"spritePath": "assets/img/menu.png"
+	},
+	"leaveButton": {
+		"sizeX":180,
+		"sizeY":180,
+		"spritePath": "assets/img/leave.png"
+	},
+	"1b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/1b.png"
+	},
+	"2b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/2b.png"
+	},
+	"3b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/3b.png"
+	},
+	"4b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/4b.png"
+	},
+	"5b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/5b.png"
+	},
+	"backb": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/backb.png"
+	},
+	"icon": {
+		"sizeX": 136,
+		"sizeY": 136,
+		"spritePath": "assets/img/icone128b.png"
+	},
+	"playb": {
 		"sizeX": 120,
 		"sizeY": 120,
 		"spritePath": "assets/img/playButton.png"
 	},
-	"splashText": {
-		"sizeX": 500,
-		"sizeY": 200,
-		"spritePath": "assets/img/splashText.png"
-	},
-	"vert": {
-		"sizeX": 50,
-		"sizeY": 50,
-		"spritePath": "assets/img/vert.png"
-	},
-	"invisiball": {
-		"invisible": true
-	},
-	"pauseSign": {
-		"sizeX": 20,
-		"sizeY": 20,
-		"spritePath": "assets/img/pauseSign.png"
-	},
-	"playSign": {
-		"sizeX": 20,
-		"sizeY": 20,
-		"spritePath": "assets/img/playSign.png"
+	"astropy": {
+		"sizeX": 1000,
+		"sizeY": 300,
+		"spritePath": "assets/img/astropy.png"
 	}
 }
