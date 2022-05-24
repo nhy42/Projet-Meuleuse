@@ -79,13 +79,13 @@
 		"spritePath": "assets/img/won.png"
 	},
 	"menuButton": {
-		"sizeX":130,
-		"sizeY":130,
+		"sizeX":180,
+		"sizeY":180,
 		"spritePath": "assets/img/menu.png"
 	},
 	"leaveButton": {
-		"sizeX":130,
-		"sizeY":130,
+		"sizeX":180,
+		"sizeY":180,
 		"spritePath": "assets/img/leave.png"
 	},
 	"1b": {
