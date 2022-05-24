@@ -1,0 +1,16 @@
+{
+	"objects": [
+		{"x": 800, "y": 430, "vx":0, "vy":0, "type":"1b", "positionType":0, "properties": ["noPhysics"], "onClick": "loadLevel_1"},
+		{"x": 960, "y": 430, "vx":0, "vy":0, "type":"2b", "positionType":0, "properties": ["noPhysics"], "onClick": "loadLevel_2"},
+		{"x": 1120, "y": 430, "vx":0, "vy":0, "type":"3b", "positionType":0, "properties": ["noPhysics"], "onClick": "loadLevel_3"},
+		{"x": 880, "y": 580, "vx":0, "vy":0, "type":"4b", "positionType":0, "properties": ["noPhysics"], "onClick": "loadLevel_4"},
+		{"x": 1040, "y": 580, "vx":0, "vy":0, "type":"5b", "positionType":0, "properties": ["noPhysics"], "onClick": "loadLevel_5"},
+		{"x": 960, "y": 730, "vx":0, "vy":0, "type":"backb", "positionType":0, "properties": ["noPhysics"], "onClick": "loadLevel_splashscreen"}
+	],
+	"spawnables": [
+	],
+	"rules": [
+		"paused"
+	],
+	"background": "assets/img/bg.png"
+}
