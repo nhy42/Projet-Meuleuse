@@ -133,7 +133,7 @@ def processEventsToDo(eventsString, objID, World=None, WorldConfig=None, Spawnab
             # on arrete l'iteration pour ne pas boucler sur des éléments du nouveau niveau
         elif splited[0] == "spawnObject":
             for oID in splited[1:]:
-                spawnObject(oID, World, Spawnables)
+                spawnObject(int(oID), World, Spawnables)
         elif splited[0] == "delObject":
             for tag in splited[1:]:
                 deleteObjectByTag(tag, World)

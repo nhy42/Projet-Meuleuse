@@ -7,11 +7,16 @@
         {"x": 705, "y": 160, "vx":0, "vy":0, "type":"uranus", "positionType":0, "properties": [""]}
 	],
 	"spawnables": [
-		{"id":200, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"pauseSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]},
-		{"id":201, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"playSign", "size": 1, "positionType":0, "properties": ["pauseSign", "noPhysics"]}
+		{"id":101, "x": 800, "y": 540, "vx":0, "vy":0, "type":"menuButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_lvlmenu"},
+		{"id":102, "x": 1120, "y": 540, "vx":0, "vy":0, "type":"leaveButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_exit"},
+		{"id":200, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"pauseSign", "positionType":0, "properties": ["pauseSign", "noPhysics"]},
+		{"id":201, "x": 1900, "y": 20, "vx":0, "vy":0, "type":"playSign", "positionType":0, "properties": ["pauseSign", "noPhysics"]},
+		{"id":500, "x": 960, "y": 500, "vx":0, "vy":0, "type":"won", "positionType":0, "properties": ["noPhysics"]},
+		{"id":501, "x": 800, "y": 700, "vx":0, "vy":0, "type":"menuButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_menu"},
+		{"id":502, "x": 1120, "y": 700, "vx":0, "vy":0, "type":"leaveButton", "positionType":0, "properties": ["noPhysics"], "onClick":"loadLevel_exit"}
 	],
 	"rules": [
-		"allowPauseKey", "paused", "allowReloadKey"
+		"allowPauseKey", "paused", "allowReloadKey", "allowMenuKey"
 	],
 	"background": "assets/img/bg.png"
 }

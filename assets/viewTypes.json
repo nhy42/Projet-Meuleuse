@@ -72,7 +72,50 @@
 		"sizeX":130,
 		"sizeY":130,
 		"spritePath": "assets/img/sun.png"
+	},
+	"won": {
+		"sizeX":400,
+		"sizeY":130,
+		"spritePath": "assets/img/won.png"
+	},
+	"menuButton": {
+		"sizeX":130,
+		"sizeY":130,
+		"spritePath": "assets/img/menu.png"
+	},
+	"leaveButton": {
+		"sizeX":130,
+		"sizeY":130,
+		"spritePath": "assets/img/leave.png"
+	},
+	"1b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/1b.png"
+	},
+	"2b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/2b.png"
+	},
+	"3b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/3b.png"
+	},
+	"4b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/4b.png"
+	},
+	"5b": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/5b.png"
+	},
+	"backb": {
+		"sizeX": 130,
+		"sizeY": 130,
+		"spritePath": "assets/img/backb.png"
 	}
-
-
 }

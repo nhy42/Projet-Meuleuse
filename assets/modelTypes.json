@@ -76,5 +76,56 @@
 		"r":65,
 		"mass":7e10,
 		"friction":0
+	},
+	"won": {
+		"type":3
+	},
+	"menuButton": {
+		"type": 1,
+		"r":90,
+		"mass":0,
+		"friction":0
+	},
+	"leaveButton": {
+		"type": 1,
+		"r":90,
+		"mass":0,
+		"friction":0
+	},
+	"1b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"2b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"3b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"4b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"5b": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
+	},
+	"backb": {
+		"type": 1,
+		"r": 65,
+		"mass": 0,
+		"friction": 0
 	}
 }
