@@ -130,5 +130,11 @@
 	},
 	"icon": {
 		"type": 3
+	},
+	"playb": {
+		"type": 1,
+		"r": 60,
+		"mass": 0,
+		"friction": 0
 	}
 }
