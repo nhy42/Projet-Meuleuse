@@ -76,5 +76,20 @@
 		"r":65,
 		"mass":7e10,
 		"friction":0
+	},
+	"won": {
+		"type":3
+	},
+	"menuButton": {
+		"type": 1,
+		"r":65,
+		"mass":0,
+		"friction":0
+	},
+	"leaveButton": {
+		"type": 1,
+		"r":65,
+		"mass":0,
+		"friction":0
 	}
 }

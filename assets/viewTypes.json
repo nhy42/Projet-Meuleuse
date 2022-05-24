@@ -72,6 +72,21 @@
 		"sizeX":130,
 		"sizeY":130,
 		"spritePath": "assets/img/sun.png"
+	},
+	"won": {
+		"sizeX":400,
+		"sizeY":130,
+		"spritePath": "assets/img/won.png"
+	},
+	"menuButton": {
+		"sizeX":130,
+		"sizeY":130,
+		"spritePath": "assets/img/menu.png"
+	},
+	"leaveButton": {
+		"sizeX":130,
+		"sizeY":130,
+		"spritePath": "assets/img/leave.png"
 	}
 
 
