@@ -127,5 +127,8 @@
 		"r": 65,
 		"mass": 0,
 		"friction": 0
+	},
+	"icon": {
+		"type": 3
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"objects": [
 		{"x": 960, "y": -100, "vx":0, "vy":100, "type":"splashText", "positionType":1, "properties": []},
-		{"x": 900, "y": 600, "x2": 1120, "y2":600, "type":"segment", "positionType":0, "properties":[], "onCollision":"splashText loadLevel_menu"}
+		{"x": 1358, "y": 518, "vx":0, "vy":100, "type":"icon", "positionType":0, "properties": []}
 	],
 	"spawnables": [
 	],
