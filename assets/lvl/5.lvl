@@ -1,7 +1,7 @@
 {
 	"objects": [
 		{"x": 1630, "y": 540, "vx":0, "vy":0, "type":"bh_aura", "positionType":0, "properties": ["noPhysics"]},
-		{"x": 1630, "y": 540, "vx":0, "vy":0, "type":"singularity", "positionType":0, "properties": [""], "onCollision":"ball loadLevel_splashscreen"},
+		{"x": 1630, "y": 540, "vx":0, "vy":0, "type":"singularity", "positionType":0, "properties": [""], "onCollision":"ball spawnObject_500_501_502 addRules_paused_dontShowPauseSign delRules_allowPauseKey_allowReloadKey_allowMenuKey"},
 		{"x": 960, "y": 970, "vx":0, "vy":0, "type":"singularity", "positionType":0, "properties": [""], "onCollision":"ball loadLevel_5"},
         {"x": 290, "y": 540, "vx":0, "vy":0, "type":"ball", "positionType":1, "properties": [""]},
         {"x": 1830, "y": 950, "vx":0, "vy":0, "type":"terre", "positionType":0, "properties": [""], "onClick":"drag"}
