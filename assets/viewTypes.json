@@ -127,5 +127,10 @@
 		"sizeX": 120,
 		"sizeY": 120,
 		"spritePath": "assets/img/playButton.png"
+	},
+	"astropy": {
+		"sizeX": 400,
+		"sizeY": 100,
+		"spritePath": "assets/img/astropy.png"
 	}
 }

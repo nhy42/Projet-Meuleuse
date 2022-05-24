@@ -136,5 +136,8 @@
 		"r": 60,
 		"mass": 0,
 		"friction": 0
+	},
+	"astropy": {
+		"type": 3
 	}
 }
